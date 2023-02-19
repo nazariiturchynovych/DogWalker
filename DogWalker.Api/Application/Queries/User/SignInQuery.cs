@@ -10,13 +10,13 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 
 //TODO it is query
-public record LogInQuery
+public record SignInQuery
 (
     string Email,
     string Password
-) : IRequest<IResult<LogInDto>>
+) : IRequest<IResult<SignInDto>>
 {
-    public class Handler : IRequestHandler<LogInQuery, IResult<LogInDto>>
+    public class Handler : IRequestHandler<SignInQuery, IResult<SignInDto>>
     {
         private readonly UserManager<User> _userManager;
         private readonly IJwtTokenGeneratorService _jwtTokenGeneratorService;
@@ -26,20 +26,20 @@ public record LogInQuery
             _userManager = userManager;
             _jwtTokenGeneratorService = jwtTokenGeneratorService;
         }
-        public async Task<IResult<LogInDto>> Handle(LogInQuery request, CancellationToken cancellationToken)
+        public async Task<IResult<SignInDto>> Handle(SignInQuery request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user is null)
-                return ResultFactory.Failure<LogInDto>(UserErrorMessages.UserDoesNotExist);
+                return ResultFactory.Failure<SignInDto>(UserErrorMessages.UserDoesNotExist);
 
             var logInResult = await _userManager.CheckPasswordAsync(user, request.Password);
 
             if (logInResult!)
-                return ResultFactory.Failure<LogInDto>(UserErrorMessages.PasswordDoesNotMatch);
+                return ResultFactory.Failure<SignInDto>(UserErrorMessages.PasswordDoesNotMatch);
 
             return ResultFactory.Success(
-                new LogInDto(_jwtTokenGeneratorService.GenerateToken(user)));
+                new SignInDto(_jwtTokenGeneratorService.GenerateToken(user)));
         }
     }
 

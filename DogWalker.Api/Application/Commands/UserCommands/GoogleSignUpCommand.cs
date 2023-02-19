@@ -7,17 +7,9 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using ResultFactory;
 
-public record SignUpCommand
-(
-    string FirstName,
-    string LastName,
-    string Email,
-    string Password,
-    int Age,
-    string PhoneNumber
-) : IRequest<IResult>
+public record GoogleSignUpCommand(string Email) : IRequest<IResult>
 {
-    public class Handler : IRequestHandler<SignUpCommand, IResult>
+    public class Handler : IRequestHandler<GoogleSignUpCommand, IResult>
     {
         private readonly UserManager<User> _userManager;
 
@@ -26,7 +18,7 @@ public record SignUpCommand
             _userManager = userManager;
         }
 
-        public async Task<IResult> Handle(SignUpCommand request, CancellationToken cancellationToken)
+        public async Task<IResult> Handle(GoogleSignUpCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
@@ -37,14 +29,13 @@ public record SignUpCommand
 
             var userToAdd = new User()
             {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Age = request.Age,
                 Email = request.Email,
-                PhoneNumber = request.PhoneNumber
+                UserName = request.Email,
+                GoogleAuth = true,
+                EmailConfirmed = true
             };
 
-            var result = await _userManager.CreateAsync(userToAdd, request.Password);
+            var result = await _userManager.CreateAsync(userToAdd);
 
             if (result.Succeeded!)
                 return ResultFactory.Failure(UserErrorMessages.CreateUserFailed);

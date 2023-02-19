@@ -26,9 +26,15 @@ builder.Services
 
 
 var configurationSettings = new JwtSettingsOptions();
-builder.Configuration.Bind("JwtSettings", configurationSettings);
+builder.Configuration.Bind(nameof(JwtSettingsOptions), configurationSettings);
 
-builder.Services.AddAuthentication(
+var googleAuthOptions = new GoogleAuthOptions();
+builder.Configuration.Bind($"Authentication:{nameof(GoogleAuthOptions)}", googleAuthOptions);
+
+
+
+builder.Services
+    .AddAuthentication(
         options =>
         {
             options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -49,10 +55,16 @@ builder.Services.AddAuthentication(
             ValidAudience = configurationSettings.Audience,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationSettings.Secret)),
         };
-    });
+    }) //TODO move to extensions
+    .AddGoogle(options =>
+    {
+        options.ClientId = googleAuthOptions.ClientId;
+            options.ClientSecret = googleAuthOptions.ClientSecret;
+        });
 
 //TODO move to extensions
 builder.Services.Configure<SMTPOptions>(builder.Configuration.GetSection(nameof(SMTPOptions)));
+builder.Services.Configure<GoogleAuthOptions>(builder.Configuration.GetSection($"Authentication:{nameof(GoogleAuthOptions)}"));
 builder.Services.Configure<JwtSettingsOptions>(builder.Configuration.GetSection(nameof(JwtSettingsOptions)));
 
 //TODO move to extensions

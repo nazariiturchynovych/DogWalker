@@ -1,4 +1,4 @@
 namespace DogWalker.Domain.DTO.User;
 
-public record LogInDto
+public record SignInDto
 (string Token);

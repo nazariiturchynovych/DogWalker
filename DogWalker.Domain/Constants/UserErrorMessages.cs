@@ -18,5 +18,5 @@ public static class UserErrorMessages
 
     public const string PasswordChangeFailed = "PASSWORD_CHANGE_FAILED";
 
-    public const string ThisEmailAlreadyExist = "THIS_EMAIL_ALREADY_EXIST";
+    public const string UserGoogleAuthorizationFailed = "USER_GOOGLE_AUTHORIZATION_FAILED";
 }

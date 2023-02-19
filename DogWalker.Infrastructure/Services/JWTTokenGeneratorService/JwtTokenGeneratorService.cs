@@ -16,7 +16,7 @@ public class JwtTokenGeneratorService : IJwtTokenGeneratorService
     {
         _jwtSettings = jwtOptions.Value;
     }
-
+//TODO maybe return errors from token generation
     public string GenerateToken(User user)
     {
         var signingCredentials = new SigningCredentials(
