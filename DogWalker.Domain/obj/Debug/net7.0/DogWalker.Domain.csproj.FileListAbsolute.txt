@@ -1,0 +1,14 @@
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/bin/Debug/net7.0/DogWalker.Domain.deps.json
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/bin/Debug/net7.0/DogWalker.Domain.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/bin/Debug/net7.0/DogWalker.Domain.pdb
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/DogWalker.Domain.csproj.AssemblyReference.cache
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/DogWalker.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/DogWalker.Domain.AssemblyInfoInputs.cache
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/DogWalker.Domain.AssemblyInfo.cs
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/DogWalker.Domain.csproj.CoreCompileInputs.cache
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/DogWalker.Domain.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/refint/DogWalker.Domain.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/DogWalker.Domain.pdb
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/ref/DogWalker.Domain.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/bin/Debug/net7.0/DogWalker.Domain.runtimeconfig.json
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Domain/obj/Debug/net7.0/DogWalker.Domain.genruntimeconfig.cache

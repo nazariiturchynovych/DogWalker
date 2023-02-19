@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ASfJGS5QpiJzstzxRtWa+WpG9E1711M0JeN9nJkr9+k=",
+  "Source": "DogWalker.Api",
+  "BasePath": "_content/DogWalker.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

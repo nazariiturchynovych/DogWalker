@@ -1,0 +1,17 @@
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/bin/Debug/net7.0/DogWalker.Infrastructure.deps.json
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/bin/Debug/net7.0/DogWalker.Infrastructure.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/bin/Debug/net7.0/DogWalker.Infrastructure.pdb
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/bin/Debug/net7.0/DogWalker.Domain.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/bin/Debug/net7.0/DogWalker.Domain.pdb
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.csproj.AssemblyReference.cache
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.AssemblyInfoInputs.cache
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.AssemblyInfo.cs
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.csproj.CopyComplete
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/refint/DogWalker.Infrastructure.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.pdb
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/ref/DogWalker.Infrastructure.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/bin/Debug/net7.0/DogWalker.Infrastructure.runtimeconfig.json
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Infrastructure/obj/Debug/net7.0/DogWalker.Infrastructure.genruntimeconfig.cache
