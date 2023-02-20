@@ -1,8 +1,8 @@
 namespace DogWalker.Domain.Entities.User;
 
+using Base;
 using Microsoft.AspNetCore.Identity;
 
-public class UserClaim : IdentityUserClaim<int>
+public class UserToken : IdentityUserToken<int>
 {
-    
 }

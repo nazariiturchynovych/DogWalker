@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text;
+using System.Text.Json.Serialization;
 using DogWalker.Api.Application.ServiceConfiguration;
 using DogWalker.Domain.Entities.User;
 using DogWalker.Domain.Options;
@@ -97,6 +98,9 @@ builder.Services.AddScoped(
 builder.Services.AddMemoryCache();
 
 builder.Services.ConfigureIdentity();
+
+builder.Services.AddMvc()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 

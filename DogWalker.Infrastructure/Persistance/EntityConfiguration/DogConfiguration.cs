@@ -13,7 +13,8 @@ public class DogConfiguration : IEntityTypeConfiguration<Dog>
 
         builder.HasOne(d => d.Photo)
             .WithOne(i => i.Dog)
-            .HasForeignKey<Image>(i => i.DogId);
+            .HasForeignKey<Image>(i => i.DogId)
+            .IsRequired(false);
 
     }
 }

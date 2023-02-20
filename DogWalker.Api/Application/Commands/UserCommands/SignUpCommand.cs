@@ -44,10 +44,8 @@ public record SignUpCommand
 
             var result = await _userManager.CreateAsync(userToAdd, request.Password);
 
-            if (result.Succeeded!)
+            if (!result.Succeeded)
                 return ResultFactory.Failure(UserErrorMessages.CreateUserFailed);
-
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return ResultFactory.Success();
         }

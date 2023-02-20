@@ -3,6 +3,7 @@ using System;
 using DogWalker.Infrastructure.DataBase.DogWalkerDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DogWalker.Infrastructure.Migrations
 {
     [DbContext(typeof(DogWalkerDbContext))]
-    partial class DogWalkerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230220175401_UpdateEntities3")]
+    partial class UpdateEntities3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -17,6 +17,7 @@ public class WalkerConfiguration : IEntityTypeConfiguration<Walker>
 
         builder.HasOne(w => w.Avatar)
             .WithOne(i => i.Walker)
-            .HasForeignKey<Image>(i => i.WalkerId);
+            .HasForeignKey<Image>(i => i.WalkerId)
+            .IsRequired(false);
     }
 }

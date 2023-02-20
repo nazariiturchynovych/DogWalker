@@ -8,7 +8,7 @@ using Domain.Results.Abstraction;
 using Infrastructure.Services.CurrentUserService;
 using MediatR;
 using ResultFactory;
-
+//TODO remove dogId and dogFamilyId
 public record AddWalkerAvatarCommand(IFormFile FormFile, int Id) : IRequest<IResult>
 {
     public class Handler : IRequestHandler<AddWalkerAvatarCommand, IResult>

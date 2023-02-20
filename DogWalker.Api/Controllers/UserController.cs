@@ -6,6 +6,9 @@ using Application.Queries.Walker;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
+//TODO when return some values with includes we need to map them into response dto because of possible object cycle
+
+
 [ApiController]
 [Route("api/[Controller]")]
 public class UserController : ControllerBase
@@ -77,8 +80,8 @@ public class UserController : ControllerBase
 
 
     [HttpGet("GetFullWalker")]
-    public async Task<IActionResult> GetFullWalker( GetFullWalkerQuery getFullWalkerQuery)
+    public async Task<IActionResult> GetFullWalker( int walkerId )
     {
-        return Ok(await _mediator.Send(getFullWalkerQuery));
+        return Ok(await _mediator.Send(new GetFullWalkerQuery(walkerId)));
     }
 }

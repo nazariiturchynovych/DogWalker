@@ -3,6 +3,7 @@ using System;
 using DogWalker.Infrastructure.DataBase.DogWalkerDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DogWalker.Infrastructure.Migrations
 {
     [DbContext(typeof(DogWalkerDbContext))]
-    partial class DogWalkerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230220173657_UpdateEntities2")]
+    partial class UpdateEntities2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,17 +168,17 @@ namespace DogWalker.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("DogFamilyId")
+                    b.Property<int>("DogFamilyId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("DogId")
+                    b.Property<int>("DogId")
                         .HasColumnType("integer");
 
                     b.Property<byte[]>("ImageBytes")
                         .IsRequired()
                         .HasColumnType("bytea");
 
-                    b.Property<int?>("WalkerId")
+                    b.Property<int>("WalkerId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -794,15 +797,21 @@ namespace DogWalker.Infrastructure.Migrations
                 {
                     b.HasOne("DogWalker.Domain.Entities.DogFamily.DogFamily", "DogFamily")
                         .WithOne("Photo")
-                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "DogFamilyId");
+                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "DogFamilyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DogWalker.Domain.Entities.DogFamily.Dog", "Dog")
                         .WithOne("Photo")
-                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "DogId");
+                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "DogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DogWalker.Domain.Entities.Walker.Walker", "Walker")
                         .WithOne("Avatar")
-                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "WalkerId");
+                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "WalkerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Dog");
 

@@ -22,6 +22,10 @@ public class EmailService : IEmailService
     }
 
     public Task SendAsync(MailMessage message)
-        => _smtpClient
+    {
+        var i = 12;
+
+        return _smtpClient
             .SendMailAsync(message);
+    }
 }
