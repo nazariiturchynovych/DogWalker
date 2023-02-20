@@ -1,6 +1,7 @@
 namespace DogWalker.Infrastructure.DataBase.DogWalkerDbContext.EntityConfiguration;
 
 using Domain.Entities.DogFamily;
+using Domain.Entities.Immage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -21,5 +22,9 @@ public class DogFamilyConfiguration : IEntityTypeConfiguration<DogFamily>
         builder.HasMany(df => df.JobRequests)
             .WithOne(jr => jr.DogFamily)
             .HasForeignKey(jr => jr.DogFamilyId);
+
+        builder.HasOne(df => df.Photo)
+            .WithOne(i => i.DogFamily)
+            .HasForeignKey<Image>(i => i.DogFamilyId);
     }
 }

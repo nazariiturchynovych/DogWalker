@@ -7,5 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 public interface IUnitOfWork
 {
     IUserRepository GetUserRepository();
+
+    IWalkerRepository GetWalkerRepository();
+
+    IScheduleRepository GetScheduleRepository();
+
+    IImageRepository GetImageRepository();
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

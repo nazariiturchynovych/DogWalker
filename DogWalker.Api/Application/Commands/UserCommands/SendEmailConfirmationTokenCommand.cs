@@ -29,7 +29,7 @@ public record SendEmailConfirmationTokenCommand(string UserEmail, string Link) :
 
         public async Task<IResult> Handle(SendEmailConfirmationTokenCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userManager.FindByIdAsync(request.UserEmail);
+            var user = await _userManager.FindByEmailAsync(request.UserEmail);
 
             if (user is null)
                 return ResultFactory.Failure(UserErrorMessages.UserDoesNotExist);

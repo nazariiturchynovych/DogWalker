@@ -5,7 +5,7 @@ using Immage;
 
 public class Dog : Entity
 {
-    public int ImageId { get; set; }
+    public Image Photo { get; set; }
 
     public string Name { get; set; }
 

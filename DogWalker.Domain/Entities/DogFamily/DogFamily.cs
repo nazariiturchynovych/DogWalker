@@ -1,5 +1,6 @@
 namespace DogWalker.Domain.Entities.DogFamily;
 
+using System.Net.Mime;
 using Base;
 using Immage;
 using Job;
@@ -11,7 +12,7 @@ public class DogFamily : Entity
     public int UserId { get; set; }
     public User User { get; set; }
 
-    public int ImageId { get; set; }
+    public Image Photo { get; set; }
 
     public int Adress { get; set; }
 

@@ -28,8 +28,8 @@ where TEntity : class, IEntity
     public void Update(TEntity entity)
         => Entities.Update(entity ?? throw new ArgumentNullException(nameof(entity)));
 
-    public void UpdateRange(ICollection<TEntity> entities)
-        => Entities.UpdateRange(entities ?? throw new ArgumentNullException(nameof(entities)));
+    public  void UpdateRange(ICollection<TEntity> entities)
+        =>  Entities.UpdateRange(entities ?? throw new ArgumentNullException(nameof(entities)));
 
     public void Remove(TEntity entity)
         => Entities.Remove(entity ?? throw new ArgumentNullException(nameof(entity)));

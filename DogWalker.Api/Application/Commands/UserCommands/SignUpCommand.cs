@@ -2,6 +2,7 @@ namespace DogWalker.Api.Application.Commands.UserCommands;
 
 using Constants;
 using Domain.Entities.User;
+using Domain.Repositories.UnitOfWork;
 using Domain.Results.Abstraction;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -9,21 +10,20 @@ using ResultFactory;
 
 public record SignUpCommand
 (
-    string FirstName,
-    string LastName,
     string Email,
     string Password,
-    int Age,
     string PhoneNumber
 ) : IRequest<IResult>
 {
     public class Handler : IRequestHandler<SignUpCommand, IResult>
     {
         private readonly UserManager<User> _userManager;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public Handler(UserManager<User> userManager)
+        public Handler(UserManager<User> userManager, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IResult> Handle(SignUpCommand request, CancellationToken cancellationToken)
@@ -37,10 +37,8 @@ public record SignUpCommand
 
             var userToAdd = new User()
             {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Age = request.Age,
                 Email = request.Email,
+                UserName = request.Email,
                 PhoneNumber = request.PhoneNumber
             };
 
@@ -48,6 +46,8 @@ public record SignUpCommand
 
             if (result.Succeeded!)
                 return ResultFactory.Failure(UserErrorMessages.CreateUserFailed);
+
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return ResultFactory.Success();
         }

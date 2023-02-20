@@ -53,3 +53,13 @@
 /Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
 /Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Mono.TextTemplating.dll
 /Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/System.CodeDom.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.Facebook.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.Google.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/turchynovychnazarii/RiderProjects/DogWalker/DogWalker.Api/bin/Debug/net7.0/Microsoft.Bcl.AsyncInterfaces.dll

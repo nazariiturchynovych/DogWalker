@@ -109,9 +109,6 @@ namespace DogWalker.Infrastructure.Migrations
                     b.Property<int>("DogFamilyId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("JobRequestId")
                         .HasColumnType("integer");
 
@@ -149,9 +146,6 @@ namespace DogWalker.Infrastructure.Migrations
                     b.Property<int>("DogsCount")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
@@ -161,6 +155,41 @@ namespace DogWalker.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("DogFamily");
+                });
+
+            modelBuilder.Entity("DogWalker.Domain.Entities.Immage.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DogFamilyId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("DogId")
+                        .HasColumnType("integer");
+
+                    b.Property<byte[]>("ImageBytes")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<int>("WalkerId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DogFamilyId")
+                        .IsUnique();
+
+                    b.HasIndex("DogId")
+                        .IsUnique();
+
+                    b.HasIndex("WalkerId")
+                        .IsUnique();
+
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("DogWalker.Domain.Entities.Job.Job", b =>
@@ -441,7 +470,7 @@ namespace DogWalker.Infrastructure.Migrations
                     b.Property<TimeOnly>("StartTime")
                         .HasColumnType("time without time zone");
 
-                    b.Property<int?>("WalkerId")
+                    b.Property<int>("WalkerId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -492,6 +521,9 @@ namespace DogWalker.Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Age")
                         .HasColumnType("integer");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -578,6 +610,17 @@ namespace DogWalker.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Age")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
@@ -586,7 +629,7 @@ namespace DogWalker.Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Walker");
+                    b.ToTable("Walkers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -773,6 +816,33 @@ namespace DogWalker.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("DogWalker.Domain.Entities.Immage.Image", b =>
+                {
+                    b.HasOne("DogWalker.Domain.Entities.DogFamily.DogFamily", "DogFamily")
+                        .WithOne("Photo")
+                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "DogFamilyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DogWalker.Domain.Entities.DogFamily.Dog", "Dog")
+                        .WithOne("Photo")
+                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "DogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DogWalker.Domain.Entities.Walker.Walker", "Walker")
+                        .WithOne("Avatar")
+                        .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "WalkerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dog");
+
+                    b.Navigation("DogFamily");
+
+                    b.Navigation("Walker");
+                });
+
             modelBuilder.Entity("DogWalker.Domain.Entities.Job.Job", b =>
                 {
                     b.HasOne("DogWalker.Domain.Entities.DogFamily.DogFamily", "DogFamily")
@@ -890,9 +960,13 @@ namespace DogWalker.Infrastructure.Migrations
 
             modelBuilder.Entity("DogWalker.Domain.Entities.Schedule.Schedule", b =>
                 {
-                    b.HasOne("DogWalker.Domain.Entities.Walker.Walker", null)
+                    b.HasOne("DogWalker.Domain.Entities.Walker.Walker", "Walker")
                         .WithMany("PossibleSchedules")
-                        .HasForeignKey("WalkerId");
+                        .HasForeignKey("WalkerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Walker");
                 });
 
             modelBuilder.Entity("DogWalker.Domain.Entities.Walker.Walker", b =>
@@ -986,6 +1060,12 @@ namespace DogWalker.Infrastructure.Migrations
                     b.Navigation("Messages");
                 });
 
+            modelBuilder.Entity("DogWalker.Domain.Entities.DogFamily.Dog", b =>
+                {
+                    b.Navigation("Photo")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DogWalker.Domain.Entities.DogFamily.DogFamily", b =>
                 {
                     b.Navigation("Dogs");
@@ -993,6 +1073,9 @@ namespace DogWalker.Infrastructure.Migrations
                     b.Navigation("JobRequests");
 
                     b.Navigation("Jobs");
+
+                    b.Navigation("Photo")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DogWalker.Domain.Entities.JobRequest.JobRequest", b =>
@@ -1041,6 +1124,9 @@ namespace DogWalker.Infrastructure.Migrations
 
             modelBuilder.Entity("DogWalker.Domain.Entities.Walker.Walker", b =>
                 {
+                    b.Navigation("Avatar")
+                        .IsRequired();
+
                     b.Navigation("Jobs");
 
                     b.Navigation("PossibleSchedules");

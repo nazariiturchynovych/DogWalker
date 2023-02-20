@@ -1,5 +1,6 @@
 namespace DogWalker.Infrastructure.DataBase.DogWalkerDbContext.EntityConfiguration;
 
+using Domain.Entities.Immage;
 using Domain.Entities.Walker;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,5 +15,8 @@ public class WalkerConfiguration : IEntityTypeConfiguration<Walker>
             .WithOne(j => j.Walker)
             .HasForeignKey(j => j.WalkerId);
 
+        builder.HasOne(w => w.Avatar)
+            .WithOne(i => i.Walker)
+            .HasForeignKey<Image>(i => i.WalkerId);
     }
 }
