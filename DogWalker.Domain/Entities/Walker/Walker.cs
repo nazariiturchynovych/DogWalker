@@ -8,7 +8,7 @@ using Job;
 using Schedule;
 using User;
 
-public class Walker : Entity
+public class Walker : Entity, IImageEntity
 {
     public int UserId { get; set; }
 
@@ -20,11 +20,11 @@ public class Walker : Entity
 
     public int Age { get; set; }
 
-    public Image Avatar { get; set; }
-
-    public ICollection<Schedule> PossibleSchedules { get; set; }
-        = new List<Schedule>();
+    public ICollection<PossibleSchedule> PossibleSchedules { get; set; }
+        = new List<PossibleSchedule>();
 
     public ICollection<Job> Jobs { get; set; }
         = new List<Job>();
+
+    public Image Image { get; set; }
 }

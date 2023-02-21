@@ -9,7 +9,7 @@ using ResultFactory;
 
 public record AddWalkerPossibleSchedulesCommand(
     int WalkerId,
-    List<Schedule> Schedules) : IRequest<IResult>
+    List<PossibleSchedule> Schedules) : IRequest<IResult>
 {
     public class Handler : IRequestHandler<AddWalkerPossibleSchedulesCommand, IResult>
     {
@@ -24,7 +24,7 @@ public record AddWalkerPossibleSchedulesCommand(
         {
             var walkerRepository = _unitOfWork.GetWalkerRepository();
 
-            var walkerExist = await walkerRepository.GetWalkerWithSchedulesAsync(request.WalkerId, cancellationToken);
+            var walkerExist = await walkerRepository.GetWalkerSchedulesAsync(request.WalkerId, cancellationToken);
 
             if (walkerExist is null)
                 return ResultFactory.Failure(WalkerErrorConstants.WalkerDoesNotExist);

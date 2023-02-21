@@ -3,9 +3,8 @@ namespace DogWalker.Domain.Entities.DogFamily;
 using Base;
 using Immage;
 
-public class Dog : Entity
+public class Dog : Entity ,IImageEntity
 {
-    public Image Photo { get; set; }
 
     public string Name { get; set; }
 
@@ -18,4 +17,5 @@ public class Dog : Entity
     public string[] Preferences { get; set; }
     public DogFamily DogFamily { get; set; }
 
+    public Image Image { get; set; }
 }

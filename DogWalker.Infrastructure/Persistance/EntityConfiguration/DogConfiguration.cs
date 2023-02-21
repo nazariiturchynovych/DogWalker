@@ -11,7 +11,7 @@ public class DogConfiguration : IEntityTypeConfiguration<Dog>
     {
         builder.ToTable("Dogs");
 
-        builder.HasOne(d => d.Photo)
+        builder.HasOne(d => d.Image)
             .WithOne(i => i.Dog)
             .HasForeignKey<Image>(i => i.DogId)
             .IsRequired(false);

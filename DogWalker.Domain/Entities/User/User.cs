@@ -13,12 +13,8 @@ using Walker;
 public class User : IdentityUser<int>, IEntity
 {
     public PersonalIdentifier PersonalIdentifier { get; set; }
-
-    public int ImageId { get; set; }
     public DogFamily DogFamily { get; set; }
-
     public Walker Walker { get; set; }
-
     public bool GoogleAuth { get; set; }
 
     public bool FacebookAuth { get; set; }

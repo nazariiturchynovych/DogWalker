@@ -453,7 +453,7 @@ namespace DogWalker.Infrastructure.Migrations
                     b.ToTable("RegularSchedule");
                 });
 
-            modelBuilder.Entity("DogWalker.Domain.Entities.Schedule.Schedule", b =>
+            modelBuilder.Entity("DogWalker.Domain.Entities.Schedule.PossibleSchedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -477,7 +477,7 @@ namespace DogWalker.Infrastructure.Migrations
 
                     b.HasIndex("WalkerId");
 
-                    b.ToTable("Schedule");
+                    b.ToTable("PossibleSchedule");
                 });
 
             modelBuilder.Entity("DogWalker.Domain.Entities.User.Role", b =>
@@ -563,9 +563,6 @@ namespace DogWalker.Infrastructure.Migrations
 
                     b.Property<bool>("GoogleAuth")
                         .HasColumnType("boolean");
-
-                    b.Property<int>("ImageId")
-                        .HasColumnType("integer");
 
                     b.Property<bool>("InstagramAuth")
                         .HasColumnType("boolean");
@@ -793,15 +790,15 @@ namespace DogWalker.Infrastructure.Migrations
             modelBuilder.Entity("DogWalker.Domain.Entities.Immage.Image", b =>
                 {
                     b.HasOne("DogWalker.Domain.Entities.DogFamily.DogFamily", "DogFamily")
-                        .WithOne("Photo")
+                        .WithOne("Image")
                         .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "DogFamilyId");
 
                     b.HasOne("DogWalker.Domain.Entities.DogFamily.Dog", "Dog")
-                        .WithOne("Photo")
+                        .WithOne("Image")
                         .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "DogId");
 
                     b.HasOne("DogWalker.Domain.Entities.Walker.Walker", "Walker")
-                        .WithOne("Avatar")
+                        .WithOne("Image")
                         .HasForeignKey("DogWalker.Domain.Entities.Immage.Image", "WalkerId");
 
                     b.Navigation("Dog");
@@ -926,7 +923,7 @@ namespace DogWalker.Infrastructure.Migrations
                     b.Navigation("JobRequest");
                 });
 
-            modelBuilder.Entity("DogWalker.Domain.Entities.Schedule.Schedule", b =>
+            modelBuilder.Entity("DogWalker.Domain.Entities.Schedule.PossibleSchedule", b =>
                 {
                     b.HasOne("DogWalker.Domain.Entities.Walker.Walker", "Walker")
                         .WithMany("PossibleSchedules")
@@ -1027,7 +1024,7 @@ namespace DogWalker.Infrastructure.Migrations
 
             modelBuilder.Entity("DogWalker.Domain.Entities.DogFamily.Dog", b =>
                 {
-                    b.Navigation("Photo")
+                    b.Navigation("Image")
                         .IsRequired();
                 });
 
@@ -1035,12 +1032,12 @@ namespace DogWalker.Infrastructure.Migrations
                 {
                     b.Navigation("Dogs");
 
+                    b.Navigation("Image")
+                        .IsRequired();
+
                     b.Navigation("JobRequests");
 
                     b.Navigation("Jobs");
-
-                    b.Navigation("Photo")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("DogWalker.Domain.Entities.JobRequest.JobRequest", b =>
@@ -1089,7 +1086,7 @@ namespace DogWalker.Infrastructure.Migrations
 
             modelBuilder.Entity("DogWalker.Domain.Entities.Walker.Walker", b =>
                 {
-                    b.Navigation("Avatar")
+                    b.Navigation("Image")
                         .IsRequired();
 
                     b.Navigation("Jobs");

@@ -35,7 +35,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.HasMany(u => u.UserRoles)
             .WithOne(ur => ur.User)
-            .HasForeignKey(ur => ur.UserId);
+            .HasForeignKey(ur => ur.UserId)
+            .IsRequired();
 
 
     }

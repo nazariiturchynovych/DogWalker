@@ -7,12 +7,11 @@ using Job;
 using JobRequest;
 using User;
 
-public class DogFamily : Entity
+public class DogFamily : Entity, IImageEntity
 {
     public int UserId { get; set; }
     public User User { get; set; }
 
-    public Image Photo { get; set; }
 
     public int Adress { get; set; }
 
@@ -26,4 +25,6 @@ public class DogFamily : Entity
 
     public ICollection<Job> Jobs { get; set; }
         = new List<Job>();
+
+    public Image Image { get; set; }
 }

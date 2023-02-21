@@ -23,7 +23,7 @@ public class DogFamilyConfiguration : IEntityTypeConfiguration<DogFamily>
             .WithOne(jr => jr.DogFamily)
             .HasForeignKey(jr => jr.DogFamilyId);
 
-        builder.HasOne(df => df.Photo)
+        builder.HasOne(df => df.Image)
             .WithOne(i => i.DogFamily)
             .HasForeignKey<Image>(i => i.DogFamilyId)
             .IsRequired(false);

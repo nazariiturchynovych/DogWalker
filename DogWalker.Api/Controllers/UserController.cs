@@ -80,8 +80,7 @@ public class UserController : ControllerBase
 
 
     [HttpGet("GetFullWalker")]
-    public async Task<IActionResult> GetFullWalker( int walkerId )
-    {
-        return Ok(await _mediator.Send(new GetFullWalkerQuery(walkerId)));
-    }
+    public async Task<IActionResult> GetFullWalker(GetWalkerWithAvatarQuery walkerWithAvatarQuery)
+        => Ok(await _mediator.Send(walkerWithAvatarQuery));
+
 }

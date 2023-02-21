@@ -10,6 +10,7 @@ using DogWalker.Infrastructure.DataBase.DogWalkerDbContext;
 using DogWalker.Infrastructure.Repositories.UnitOfWork;
 using DogWalker.Infrastructure.Services.CurrentUserService;
 using DogWalker.Infrastructure.Services.EMailService;
+using DogWalker.Infrastructure.Services.ImageService;
 using DogWalker.Infrastructure.Services.JWTTokenGeneratorService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -26,7 +27,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DogWalkerDbContext>(
     options =>
-        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    {
+        options.UseNpgsql(
+            o =>
+            {
+                o.CommandTimeout(300);
+            });
+        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
 
 builder.Services
     .AddIdentity<User, Role>()
@@ -77,6 +85,9 @@ builder.Services.Configure<SMTPOptions>(builder.Configuration.GetSection(nameof(
 builder.Services.Configure<GoogleAuthOptions>(builder.Configuration.GetSection($"Authentication:{nameof(GoogleAuthOptions)}"));
 builder.Services.Configure<JwtSettingsOptions>(builder.Configuration.GetSection(nameof(JwtSettingsOptions)));
 
+
+
+builder.Services.AddScoped(typeof(IImageService<>), typeof(ImageService<>));
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<IJwtTokenGeneratorService, JwtTokenGeneratorService>();

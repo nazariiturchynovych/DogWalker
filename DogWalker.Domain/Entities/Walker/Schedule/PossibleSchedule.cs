@@ -3,7 +3,7 @@ namespace DogWalker.Domain.Entities.Schedule;
 using Base;
 using Walker;
 
-public class Schedule : Entity
+public class PossibleSchedule : Entity
 {
     public int WalkerId { get; set; }
 
@@ -14,16 +14,4 @@ public class Schedule : Entity
     public TimeOnly StartTime { get; set; }
 
     public TimeOnly EndTime { get; set; }
-}
-
-public enum DayOfWeek
-{
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday,
-    All
 }

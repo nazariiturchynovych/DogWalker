@@ -12,12 +12,14 @@ public class UserRolesConfiguration : IEntityTypeConfiguration<UserRole>
     {
         builder.ToTable("UserRoles");
 
+
         builder
-            .HasKey(ur => new
-            {
-                ur.UserId,
-                ur.RoleId
-            });
+            .HasKey(
+                ur => new
+                {
+                    ur.UserId,
+                    ur.RoleId
+                });
 
         builder.HasData(
             new UserRole()

@@ -23,4 +23,9 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="DTO\Job" />
+      <Folder Include="DTO\Schedule" />
+    </ItemGroup>
+
 </Project>

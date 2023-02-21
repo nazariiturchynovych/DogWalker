@@ -1,6 +1,7 @@
 namespace DogWalker.Infrastructure.Repositories.UnitOfWork;
 
 using DataBase.DogWalkerDbContext;
+using Domain.Entities.Schedule;
 using Domain.Entities.Walker;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -22,19 +23,17 @@ public class WalkerRepository : AbstractRepository<Walker>, IWalkerRepository
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
     }
 
-    public async Task<Walker?> GetFullWalkerAsync(int id, CancellationToken cancellationToken = default)
+    public async Task<Walker?> GetWalkerWithAvatarAsync(int id, CancellationToken cancellationToken = default)
     {
         return await _context.Walkers.Where(w => w.Id == id)
-            .Include(w => w.Jobs)
-            .Include(w => w.PossibleSchedules)
-            .Include(w => w.Avatar)
+            .Include(w => w.Image)
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
     }
 
-    public async Task<Walker?> GetWalkerWithSchedulesAsync(int id, CancellationToken cancellationToken = default)
+    public async Task<ICollection<PossibleSchedule>?> GetWalkerSchedulesAsync(int id, CancellationToken cancellationToken = default)
     {
         return await _context.Walkers.Where(w => w.Id == id)
-            .Include(w => w.PossibleSchedules)
+            .Select(w => w.PossibleSchedules)
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
     }
 }
